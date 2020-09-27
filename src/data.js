@@ -225,7 +225,7 @@ export const data = [
     Director: 'Anthony Wonke',
     Writer: 'N/A',
     Actors: 'Dolores Aveiro, Hugo Aveiro, Georgie Bingham, Adrian Clarke',
-    Plot: 'A close look at the life of Cristiano Ronaldo.',
+    Plot: 'Ronaldo is a 2015 British documentary film directed by Anthony Wonke. It follows the life and career of Portuguese professional footballer Cristiano Ronaldo.',
     Language: 'Portuguese, English, Spanish',
     Country: 'UK, Spain',
     Awards: 'N/A',
