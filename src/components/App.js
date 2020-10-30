@@ -3,6 +3,7 @@ import { data } from '../data';
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
 import '../index.css';
+import { addMovies } from '../actions'
 //import { ReactComponent } from '*.svg';
 
 class App extends React.Component {
@@ -16,10 +17,15 @@ componentDidMount() {
   });
 
   //dispatch action
-  this.props.store.dispatch({
+  /*
+  this.props.store.dispatch(
+    //we are hardcoding this action object wich is not a good practise
+    {
     type: 'ADD_MOVIES' ,
     movies: data
   });
+*/
+store.dispatch(addMovies(data));
 
   console.log('STATE', this.props.store.getState());
 }
@@ -28,7 +34,7 @@ componentDidMount() {
 
 render()
 {
-  const movies = this.props.store.getState();
+  const { list } = this.props.store.getState(); //{ list:[] , favourites:[]}
   return (
     <div className="App">
       <Navbar />
@@ -38,7 +44,7 @@ render()
           <div className="tab">Favourites</div>
         </div>
         <div className="list">
-            {movies.map((movie, index)=>(
+            {list.map((movie, index)=>(
               <MovieCard movie = {movie} key= {`movies-${index}`} />
             ))
 
