@@ -3,8 +3,32 @@ import { data } from '../data';
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
 import '../index.css';
+//import { ReactComponent } from '*.svg';
 
-function App() {
+class App extends React.Component {
+componentDidMount() {
+  //api call to get movies
+  const {store} = this.props ;
+  store.subscribe(() => {
+    console.log("UPDATED");
+    this.forceUpdate();
+
+  });
+
+  //dispatch action
+  this.props.store.dispatch({
+    type: 'ADD_MOVIES' ,
+    movies: data
+  });
+
+  console.log('STATE', this.props.store.getState());
+}
+
+
+
+render()
+{
+  const movies = this.props.store.getState();
   return (
     <div className="App">
       <Navbar />
@@ -14,7 +38,7 @@ function App() {
           <div className="tab">Favourites</div>
         </div>
         <div className="list">
-            {data.map((movie, index)=>(
+            {movies.map((movie, index)=>(
               <MovieCard movie = {movie} key= {`movies-${index}`} />
             ))
 
@@ -23,6 +47,8 @@ function App() {
       </div>
     </div>
   );
+
+}
 }
 
 export default App;
